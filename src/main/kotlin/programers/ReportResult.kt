@@ -1,6 +1,15 @@
 package programers
+/*
 
+["muzi", "frodo", "apeach", "neo"]
+
+reports
+["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"]
+
+2	[2,1,1,0]
+ */
 class ReportResult {
+
     fun solution(idList: Array<String>, reports: Array<String>, k: Int): IntArray {
         // 신고자와 신고 대상이 중복될 수 없다.
         val reportSets = reports.toSet()
@@ -11,6 +20,7 @@ class ReportResult {
             val users = report.split(" ")
             val reportedUser = users[1]
             reportedUserMap[reportedUser] = reportedUserMap.getOrDefault(reportedUser, 0) + 1
+            // reportedUserMap[frodo] = 2
         }
 
         /*
@@ -35,4 +45,16 @@ class ReportResult {
          */
         return idList.map { reporterMap.getOrDefault(it, 0) }.toTypedArray().toIntArray()
     }
+
+    fun bestSolution(id_list: Array<String>, report: Array<String>, k: Int): IntArray =
+        report.map { it.split(" ") }
+            .groupBy { it[1] }
+            .asSequence()
+            .map { it.value.distinct() }
+            .filter { it.size >= k }
+            .flatten()
+            .map { it[0] }
+            .groupingBy { it }
+            .eachCount()
+            .run { id_list.map { getOrDefault(it, 0) }.toIntArray() }
 }
