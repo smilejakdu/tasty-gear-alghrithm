@@ -8,6 +8,9 @@ class Lotto {
             winNumMap[it] = 0
         }
 
+//        val filter1 = lottos.filter(win_nums::contains)
+//        val filter = lottos.filter { win_nums.contains(it) }
+
         lottos.forEach {
             if (winNumMap[it] != null) {
                 winNumMap[it] = 1
@@ -19,6 +22,11 @@ class Lotto {
 
         return intArrayOf(getRank(matchedCount + count), getRank(matchedCount))
     }
+
+    fun bestSolution(lottos: IntArray, winNums: IntArray) = intArrayOf(
+        (lottos.size.plus(1)) - lottos.filter { winNums.contains(it) || it == 0 }.size,
+        (lottos.size.plus(1)) - lottos.filter(winNums::contains).size
+    ).map { if (it > 6) it - 1 else it }.toIntArray()
 
     /*
         1	6개 번호가 모두 일치
