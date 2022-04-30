@@ -40,3 +40,24 @@ def solution(s):
 
 s = "14oneeight"
 print(solution(s))
+
+'''
+다른사람 풀이
+아래처럼 풀려고 했는데,
+다시 생각해보면 ... list 라는것이 index 가 있으니 , 
+zero 는 index 0 
+one 은 index 1 
+으로 하면 되지않을까?? 생각을 해서 저는 list 로 풀었습니다.
+
+알고리즘 공부하면서 느끼는건데... 신기한게 생각하는게 다 비슷비슷한게 신기하네요
+'''
+
+num_dic = {"zero": "0", "one": "1", "two": "2", "three": "3", "four": "4", "five": "5", "six": "6", "seven": "7",
+           "eight": "8", "nine": "9"}
+
+
+def solution(s):
+    answer = s
+    for key, value in num_dic.items():
+        answer = answer.replace(key, value)
+    return int(answer)
