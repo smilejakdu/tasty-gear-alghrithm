@@ -1,28 +1,42 @@
+# coding=utf-8
 """
 s	                result
 "one4seveneight"	1478
 "23four5six7"	    234567
 "2three45sixseven"	234567
 "123"	            123
+
+숫자	영단어
+0	zero
+1	one
+2	two
+3	three
+4	four
+5	five
+6	six
+7	seven
+8	eight
+9	nine
 """
 
 import re
 
 
 def solution(s):
-    answer = 0
-    strings = ''
-    number = 0
+    number_list = [
+        'zero', 'one', 'two', 'three',
+        'four', 'five', 'six', 'seven',
+        'eight', 'nine'
+    ]
 
-    string_list = list(s)
-    for string in string_list:
-        if str(string).isalpha():
-            print('if:', string)
-        else:
-            print('else if:', string)
+    if s.isdigit():
+        return int(s)
 
-    return answer
+    for index, number in enumerate(number_list):
+        s = s.replace(number, str(index))
+
+    return int(s)
 
 
-s = "one4seveneight"
+s = "14oneeight"
 print(solution(s))
