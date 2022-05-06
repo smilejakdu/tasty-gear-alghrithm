@@ -29,38 +29,38 @@ class KeyPad {
         )
 
         val mainHand = if (hand == "right") "R" else "L"
-        var left = 10
-        var right = 12
+        var currentLeft = 10
+        var currentRight = 12
         numbers.forEach {
             when (handMap[it]) {
                 'L' -> {
-                    left = it
+                    currentLeft = it
                     answer = answer.plus("L")
                 }
                 'R' -> {
-                    right = it
+                    currentRight = it
                     answer = answer.plus("R")
                 }
                 else -> {
-                    val l = keyPadMap[left]!!
-                    val r = keyPadMap[right]!!
-                    val i = keyPadMap[it]!!
+                    val leftPosition = keyPadMap[currentLeft]!!
+                    val rightPosition = keyPadMap[currentRight]!!
+                    val selectedPosition = keyPadMap[it]!!
 
-                    val leftCount = abs(i[0] - l[0]) + abs(i[1] - l[1])
-                    val rightCount = abs(i[0] - r[0]) + abs(i[1] - r[1])
+                    val leftCount = abs(selectedPosition[0] - leftPosition[0]) + abs(selectedPosition[1] - leftPosition[1])
+                    val rightCount = abs(selectedPosition[0] - rightPosition[0]) + abs(selectedPosition[1] - rightPosition[1])
 
                     answer = if (leftCount == rightCount) {
                         if (mainHand == "R") {
-                            right = it
+                            currentRight = it
                         } else {
-                            left = it
+                            currentLeft = it
                         }
                         answer.plus(mainHand)
                     } else if (leftCount > rightCount) {
-                        right = it
+                        currentRight = it
                         answer.plus("R")
                     } else {
-                        left = it
+                        currentLeft = it
                         answer.plus("L")
                     }
                 }
