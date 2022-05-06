@@ -4,7 +4,7 @@ import re
 
 def solution(new_id):
     new_id = new_id.lower()  # 소문자
-    new_id = re.sub('[^a-z0-9\-_.]', '', new_id)  # 소문자 , 숫자 , 빼기 , 밑줄 , 마침표 빼고 제거
+    new_id = re.sub('[^a-z0-9\-_.]', '', new_id)  # 소문자 , 숫자 , 빼기 , 밑줄 , 마침표 빼고 제거))
     while '..' in new_id:  # 2번이상 연속된 부분을 하나의 마침표로 치환
         new_id = new_id.replace("..", ".")
     new_id = new_id.strip(".")  # 마침표가 처음이나 끝에 위치한다면 제거
