@@ -21,6 +21,8 @@ s	                result
 
 import re
 
+s = 'one4seveneight'
+
 
 def solution(s):
     number_list = [
