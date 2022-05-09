@@ -23,3 +23,11 @@ print(solution(numbers))
 다른사람풀이
 '''
 solution = lambda x: sum(range(10)) - sum(x)
+
+'''
+다른사람풀이2
+'''
+
+
+def solution(numbers):
+    return sum([i for i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 0] if i not in numbers])
