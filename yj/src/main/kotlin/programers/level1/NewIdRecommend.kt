@@ -1,4 +1,4 @@
-package programers
+package programers.level1
 
 /*
 1단계 new_id의 모든 대문자를 대응되는 소문자로 치환합니다.

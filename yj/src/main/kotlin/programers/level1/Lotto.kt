@@ -1,4 +1,4 @@
-package programers
+package programers.level1
 
 class Lotto {
 
